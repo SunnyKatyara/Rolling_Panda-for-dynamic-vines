@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <name>rolling_panda_opensot</name>
+  <version>1.0.0</version>
+  <description>The rolling_panda_opensot package</description>
+  <maintainer email="sunny.katyara@iit.it">sunny</maintainer>
+  <license>Creative Commons BY-NC-ND 3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
