@@ -1,0 +1,109 @@
+    # Publish joint states
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 10
+
+panda_arm_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+     - panda_joint_x
+     - panda_joint_y
+     - panda_joint_theta
+     - schunk_pw70_joint_pan
+     - schunk_pw70_joint_tilt
+     - panda_joint_1
+     - panda_joint_2
+     - panda_joint_3
+     - panda_joint_4
+     - panda_joint_5
+     - panda_joint_6
+     - panda_joint_7
+     - ft_sensor_jnt
+     - panda_finger_joint1
+     - panda_finger_joint2
+
+  constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.05
+
+      panda_joint_x: {trajectory: 0.1, goal: 0.1}
+      panda_joint_y: {trajectory: 0.1, goal: 0.1}
+      panda_joint_theta: {trajectory: 0.1, goal: 0.1}
+      schunk_pw70_joint_pan: {trajectory: 0.1, goal: 0.1}
+      schunk_pw70_joint_tilt: {trajectory: 0.1, goal: 0.1}
+      panda_joint_1: {trajectory: 0.1, goal: 0.1}
+      panda_joint_2: {trajectory: 0.1, goal: 0.1}
+      panda_joint_3: {trajectory: 0.1, goal: 0.1}
+      panda_joint_4: {trajectory: 0.1, goal: 0.1}
+      panda_joint_5: {trajectory: 0.1, goal: 0.1}
+      panda_joint_6: {trajectory: 0.1, goal: 0.1}
+      panda_joint_7: {trajectory: 0.1, goal: 0.1}
+      ft_sensor_jnt: {trajectory: 0.1, goal: 0.1}
+      panda_finger_joint1: {trajectory: 0.1, goal: 0.1}
+      panda_finger_joint2: {trajectory: 0.1, goal: 0.1}
+  stop_trajectory_duration: 0.5
+  state_publish_rate:  10
+  action_monitor_rate: 10
+
+
+ # Velocity Controllers ---------------------------------------
+jointx_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_x
+  pid: {p: 12000.0, i: 0.0, d: 50.0}
+jointy_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_y
+  pid: {p: 12000.0, i: 0.0, d: 50.0}
+jointtheta_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_theta
+  pid: {p: 12000.0, i: 0.0, d: 50.0}
+jointpan_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: schunk_pw70_joint_pan
+  pid: {p: 12000.0, i: 0.0, d: 50.0}
+jointtilt_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: schunk_pw70_joint_tilt
+  pid: {p: 12000.0, i: 0.0, d: 50.0}
+joint0_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_1
+  pid: {p: 30000.0, i: 0.0, d: 50.0}
+joint1_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_2
+  pid: {p: 30000.0, i: 0.02, d: 50.0}
+joint2_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_3
+  pid: {p: 30000.0, i: 0.01, d: 50.0}
+joint3_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_4
+  pid: {p: 30000.0, i: 0.01, d: 70.0}
+joint4_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_5
+  pid: {p: 30000.0, i: 0.01, d: 70.0}
+joint5_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_6
+  pid: {p: 30000.0, i: 0.01, d: 50.0}
+joint6_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_joint_7
+  pid: {p: 30000.0, i: 0.1, d: 20.0}
+jointsensor_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: ft_sensor_jnt
+  pid: {p: 30000.0, i: 0.0, d: 20.0}
+jointleft_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_finger_joint1
+  pid: {p: 30000.0, i: 0.0, d: 20.0}
+jointright_velocity_controller:
+  type: position_controllers/JointPositionController
+  joint: panda_finger_joint2
+  pid: {p: 30000.0, i: 0.0, d: 20.0}
