@@ -1,0 +1,32 @@
+<launch>
+  <group ns="panda">
+  <!-- these arguments you can pass this launch file-->
+  <arg name="namespace" default="/panda"/>
+  <arg name="controllers" default="panda_arm_controller"/>				   
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find rolling_panda_opensot)/configs/panda_control.yaml"  command="load" ns="$(arg namespace)"/>
+
+  <!-- load the controllers -->
+  <node name="panda_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="$(arg namespace)" args="$(arg controllers)" />
+    
+  <node name="controller_spawner_stopped" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/panda" args="--stopped jointx_velocity_controller jointy_velocity_controller jointtheta_velocity_controller jointpan_velocity_controller jointtilt_velocity_controller joint0_velocity_controller joint1_velocity_controller joint2_velocity_controller joint3_velocity_controller joint4_velocity_controller joint5_velocity_controller joint6_velocity_controller jointsensor_velocity_controller jointleft_velocity_controller jointright_velocity_controller"/>
+  </group>
+
+  <group ns="tree">
+
+<!-- these arguments you can pass this launch file-->
+  <arg name="namespace" default="/tree"/>
+  <arg name="controllers" default="joint1_position_controller joint2_position_controller"/>				   
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find rolling_panda_opensot)/configs/tree.yaml"  command="load" ns="$(arg namespace)"/>
+
+  <!-- load the controllers -->
+  <node name="tree_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="$(arg namespace)" args="$(arg controllers)" />
+  </group>
+</launch>
+
